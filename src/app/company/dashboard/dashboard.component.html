@@ -1,0 +1,128 @@
+<section class="dashboard-container">
+  <section class="search-bar-container">
+    <section class="search-bar">
+      <i class="material-icons">
+        search
+      </i>
+      <input type="text" placeholder="Search o.a. by number, project number, contact info etc">
+      <a class="reset-filter">Reset Filters</a>
+      <button class="search-button">Search Receipt</button>
+    </section>
+  </section>
+
+  <main>
+    <section class="header-container">
+      <section class="tabs-container">
+        <section class="tab" *ngFor="let tab of tabList" (click)="selectTab(tab)">
+          <section class="tab-title" [class.selected]="selectedTab === tab">
+            <h2>{{tab.title}}({{tab.num}})</h2>
+          </section>
+          <section class="tab-underline" [class.selected]="selectedTab === tab">
+          </section>
+        </section>
+      </section>
+      <section class="filters-container">
+        <h2>Filter: </h2>
+        <section class="filter-dropdown" *ngFor="let filter of filtersList">
+          <section class="filter-dropdown-title">
+            {{filter.title}}
+          </section>
+          <i class="material-icons">
+            expand_more
+          </i>
+        </section>
+      </section>
+      <section class="export-dropdown">
+        <section class="dropdown-title">Export selected</section>
+        <i class="material-icons">
+          expand_more
+        </i>
+      </section>
+    </section>
+
+    <section class="table-container">
+      <table class="receipt-table">
+        <thead>
+          <tr>
+            <th class="table-column-header select-column-header" colspan="1">
+              <input type="checkbox" class="table-checkbox">
+            </th>
+            <th class="table-column-header" colspan="1">NUMBER</th>
+            <th class="table-column-header" colspan="1">DATE</th>
+            <th class="table-column-header" colspan="1">PROJECT</th>
+            <th class="table-column-header" colspan="1">HIRED THROUGH</th>
+            <th class="table-column-header" colspan="1">ADDRESS AND PLACE</th>
+            <th class="table-column-header" colspan="1">NAME</th>
+            <th class="table-column-header" colspan="1">HOURS</th>
+            <th class="table-column-header" colspan="1">MADE COSTS</th>
+            <th class="table-column-header" colspan="1">PERIOD</th>
+            <th class="table-column-header" colspan="2">STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let receipt of receipts">
+            <td class="receipt-table-data-column">
+              <section class="selection-data-column">
+                <i class="material-icons">
+                  chevron_right
+                </i>
+                <input type="checkbox" class="table-checkbox">
+              </section>
+            </td>
+            <td class="receipt-table-data-column">
+              <section class="receipt-number-data-column">
+                <section class="badge" [ngStyle]="{'background': 'rgba(60, 64, 67, 0.15)', 'color': 'rgba(60, 64, 67, 1)'}">{{receipt.number}}</section>
+              </section>
+            </td>
+            <td class="receipt-table-data-column">
+              {{receipt.date | date: 'short'}}
+            </td>
+            <td class="receipt-table-data-column data-column-with-border">
+              <section class="project-number-data-column">
+                <p>{{receipt.project.number}}</p>
+                <p class="project-receipts">8 receipts</p>
+              </section>
+            </td>
+            <td class="receipt-table-data-column">
+              {{receipt.hiredThrough}}
+            </td>
+            <td class="receipt-table-data-column">
+              <section class="address-data-column">
+                <p class="address">{{receipt.address}} </p>
+                <p class="place">{{receipt.city}}</p>
+              </section>
+            </td>
+            <td class="receipt-table-data-column ">
+              <section class="name-data-column">
+                <i class="material-icons">
+                  comment
+                </i>
+                <section>
+                  <p class="name-data-column-title">{{receipt.staff.firstName}} {{receipt.staff.lastName}}</p>
+                  <p class="name-data-column-phone">{{receipt.staff.phone}}</p>
+                </section>
+              </section>
+            </td>
+            <td class="receipt-table-data-column">
+              8 hours
+            </td>
+            <td class="receipt-table-data-column">
+              €442,25
+            </td>
+            <td class="receipt-table-data-column">
+              {{receipt.startDate | date: 'shortDate'}} - {{receipt.endDate | date: 'shortDate'}}
+            </td>
+            <td class="receipt-table-data-column">
+              <section class="status-data-column">
+                <section class="badge" [ngStyle]="statusColor[receipt.status]">{{receipt.status}}</section>
+                <i class="material-icons">
+                  more_vert
+                </i>
+              </section>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</section>

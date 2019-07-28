@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://use.typekit.net/ytp4zpi.css");
+* {
+  font-family: museo-sans, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+  }
+}

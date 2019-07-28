@@ -1,0 +1,20 @@
+<section class="header-container">
+  <a class="logo-anchor" routerLink="./dashboard">
+    <img src="assets/company-dashboard-logo.svg" alt="werkbonnetje.nl">
+  </a>
+
+  <section class="menu-item-container">
+    <a class="menu-item" routerLink="./dashboard" [class.selected]="selectedMenuItem === 'Dashboard'">Dashboard</a>
+    <a class="menu-item" routerLink="./projects" [class.selected]="selectedMenuItem === 'Projects'">Projects</a>
+    <a class="menu-item" routerLink="./myForms" [class.selected]="selectedMenuItem === 'My Forms'">My forms</a>
+    <a class="menu-item user-menu">
+      <section class="avatar">
+        <span>JD</span>
+      </section>
+      <span class="user-name">John Doe</span>
+      <i class="material-icons">
+        expand_more
+      </i>
+    </a>
+  </section>
+</section>

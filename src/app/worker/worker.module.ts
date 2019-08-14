@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { WorkerRoutingModule } from './worker-routing.module';
-import { WorkerBaseComponent } from './worker-base/worker-base.component';
+import {WorkerRoutingModule} from './worker-routing.module';
+import {WorkerBaseComponent} from './worker-base/worker-base.component';
 
 @NgModule({
   declarations: [WorkerBaseComponent],

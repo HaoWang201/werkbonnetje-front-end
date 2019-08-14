@@ -5,77 +5,6 @@
   //width: 100%;
 }
 
-.search-bar-container {
-  width: 100%;
-  padding-bottom: 36px;
-}
-
-.search-bar {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 48px;
-
-  padding: 0 6px 0 24px;
-  border: 1px solid $border-color;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px $box-shadow-color;
-
-  .material-icons {
-    font-size: 18px;
-  }
-
-  input {
-    border: none;
-    display: flex;
-    flex-grow: 1;
-    height: 90%;
-    outline: none;
-    font-size: 12px;
-    font-weight: 500;
-    color: $font-color;
-
-    padding: 0 12px;
-
-    &:focus {
-    }
-
-    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: $font-color;
-      opacity: 0.24; /* Firefox */
-    }
-
-    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: $font-color;
-      opacity: 0.24;
-    }
-
-    &::-ms-input-placeholder { /* Microsoft Edge */
-      color: $font-color;
-      opacity: 0.24;
-    }
-  }
-}
-.search-button {
-  height: 36px;
-  background: $primary-color;
-  border-radius: 4px;
-  border: none;
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 0 24px;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.reset-filter {
-  opacity: 0.24;
-  margin-right: 12px;
-}
-
 .header-container {
   width: 100%;
   display: flex;
@@ -105,7 +34,7 @@
 }
 
 .tab-title {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: 500;
   margin-bottom: 8px;
   padding: 0 6px;
@@ -145,7 +74,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: 1rem;
   margin: 0 12px;
 
   &:hover {
@@ -158,7 +87,7 @@
   }
 
   .material-icons {
-    font-size: 14px;
+    font-size: 1.5rem;
     opacity: 0.36;
   }
 }
@@ -183,7 +112,7 @@
   }
 
   .material-icons {
-    font-size: 14px;
+    font-size: 1.5rem;
     color: $primary-color;
   }
 }
@@ -196,7 +125,7 @@
 }
 
 .table-column-header {
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 500;
   text-align: left;
 
@@ -216,31 +145,101 @@
 thead {
   tr {
     th {
-      padding-bottom: 8px;
+      padding: 8px;
     }
   }
 }
 
 tbody {
   border-radius: 14px;
-  border: 1px solid $border-color;
+  border: 2px solid $border-color;
 
   tr {
     height: 50px;
     transition: all 200ms;
+    border-bottom: 1px solid $border-color;
     &:hover {
       background: rgba(0, 122, 255, 0.05);
+    }
+
+    &.expanded-row-section {
+
+      transition: 200ms ease-in-out;
+      transform-origin: top;
+
+      &:hover {
+        background: none;
+      }
+
+      td {
+        text-align: center;
+      }
     }
   }
 }
 
+.detail-column {
+  padding: 2rem;
+  position: relative;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+.column-with-right-border {
+  &:after {
+    background-color: $border-color;
+    right: 0;
+    content: '';
+    display: block;
+    width: 1px;
+    bottom: 50%;
+    position: absolute;
+    transform: translateY(50%);
+    height: calc(100% - 2rem);
+  }
+}
+
+.action-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .action-anchor {
+    width: 100%;
+    padding: 12px 0;
+    transition: all 200ms;
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+  }
+}
+
 .receipt-table-data-column {
-  font-size: 11px;
+  font-size: 1rem;
   font-weight: 500;
+  padding: 8px;
 
   //&.data-column-with-border {
   //  border-left: 1px solid $border-color;
   //}
+}
+
+.with-left-border {
+  border-left: 1px solid $border-color;
 }
 
 .selection-data-column {
@@ -250,9 +249,18 @@ tbody {
   padding: 0 12px;
 
   .material-icons {
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: 700;
     color: $primary-color;
+    transition: all 200ms;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.expanded {
+      transform: rotate(90deg);
+    }
   }
 }
 
@@ -271,7 +279,7 @@ tbody {
   .project-receipts {
     opacity: 0.4;
     margin: 0;
-    font-size: 10px;
+    font-size: 0.8rem;
     text-align: center;
   }
 }
@@ -285,7 +293,7 @@ tbody {
   .place {
     opacity: 0.4;
     margin: 0;
-    font-size: 10px;
+    font-size: 0.8rem;
     text-align: center;
   }
 }
@@ -297,7 +305,7 @@ tbody {
 
   .material-icons {
     color: rgba(252, 175, 46, 1);
-    font-size: 14px;
+    font-size: 1rem;
     padding: 3px;
     margin-right: 12px;
     border-radius: 1px;
@@ -307,7 +315,7 @@ tbody {
   .name-data-column-phone {
     opacity: 0.4;
     margin: 0;
-    font-size: 10px;
+    font-size: 0.8rem;
   }
 }
 

@@ -1,16 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://use.typekit.net/ytp4zpi.css");
+
+html, body {
+  height: 100%;
+}
+
 * {
   font-family: museo-sans, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 14px;
   margin: 0;
+
 }
 
 a {
   text-decoration: none;
   &:hover {
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  * {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  * {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 1081px) {
+  * {
+    font-size: 14px;
   }
 }

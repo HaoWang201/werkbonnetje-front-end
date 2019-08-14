@@ -1,13 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {tabs} from './tabs';
 import {filters} from './filters';
 import Receipt from '../shared/models/receipt';
 import {ReceiptService} from '../shared/services/receipt.service';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ transform: 'scaleY(0)' }),
+        animate('.3s ease-out', style({ transform: 'scaleY(1)' })),
+      ]),
+      transition(':leave', [
+        style({ transform: 'scaleY(1)' }),
+        animate('.25s ease-out', style({ transform: 'scaleY(0)' })),
+      ]),
+    ]),
+  ],
 })
 export class DashboardComponent implements OnInit {
   tabList = [];
@@ -46,6 +59,4 @@ export class DashboardComponent implements OnInit {
   selectTab(tab) {
     this.selectedTab = tab;
   }
-
-  getStatusColor
 }

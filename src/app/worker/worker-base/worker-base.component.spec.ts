@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WorkerBaseComponent } from './worker-base.component';
+import {WorkerBaseComponent} from './worker-base.component';
 
 describe('WorkerBaseComponent', () => {
   let component: WorkerBaseComponent;

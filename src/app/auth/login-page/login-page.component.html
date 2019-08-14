@@ -1,0 +1,23 @@
+<section class="page-container">
+  <section class="form-section">
+    <img src="assets/icon logo.svg" class="logo">
+
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
+      <h1>Log in bij je <br> werkbonnetje</h1>
+
+      <label for="email">E-mail adres</label>
+      <input id="email" name="email" formControlName="email">
+      <label for="password">Wachtwoord</label>
+      <input id="password" name="password" formControlName="password">
+
+      <footer>
+        <a>Wachtwoord vergeten?</a>
+        <button type="submit">Inloggen</button>
+      </footer>
+    </form>
+  </section>
+
+  <section class="illustration-section">
+    <img src="assets/auth/illustration.svg" class="illu-img">
+  </section>
+</section>

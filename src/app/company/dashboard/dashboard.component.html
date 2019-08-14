@@ -1,15 +1,5 @@
 <section class="dashboard-container">
-  <section class="search-bar-container">
-    <section class="search-bar">
-      <i class="material-icons">
-        search
-      </i>
-      <input type="text" placeholder="Search o.a. by number, project number, contact info etc">
-      <a class="reset-filter">Reset Filters</a>
-      <button class="search-button">Search Receipt</button>
-    </section>
-  </section>
-
+  <app-search-bar buttonText="Search Receipt" [inputPlaceholder]="'Search o.a. by number, project number, contact info etc'"></app-search-bar>
   <main>
     <section class="header-container">
       <section class="tabs-container">
@@ -60,67 +50,106 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let receipt of receipts">
-            <td class="receipt-table-data-column">
-              <section class="selection-data-column">
-                <i class="material-icons">
-                  chevron_right
-                </i>
-                <input type="checkbox" class="table-checkbox">
-              </section>
-            </td>
-            <td class="receipt-table-data-column">
-              <section class="receipt-number-data-column">
-                <section class="badge" [ngStyle]="{'background': 'rgba(60, 64, 67, 0.15)', 'color': 'rgba(60, 64, 67, 1)'}">{{receipt.number}}</section>
-              </section>
-            </td>
-            <td class="receipt-table-data-column">
-              {{receipt.date | date: 'short'}}
-            </td>
-            <td class="receipt-table-data-column data-column-with-border">
-              <section class="project-number-data-column">
-                <p>{{receipt.project.number}}</p>
-                <p class="project-receipts">8 receipts</p>
-              </section>
-            </td>
-            <td class="receipt-table-data-column">
-              {{receipt.hiredThrough}}
-            </td>
-            <td class="receipt-table-data-column">
-              <section class="address-data-column">
-                <p class="address">{{receipt.address}} </p>
-                <p class="place">{{receipt.city}}</p>
-              </section>
-            </td>
-            <td class="receipt-table-data-column ">
-              <section class="name-data-column">
-                <i class="material-icons">
-                  comment
-                </i>
-                <section>
-                  <p class="name-data-column-title">{{receipt.staff.firstName}} {{receipt.staff.lastName}}</p>
-                  <p class="name-data-column-phone">{{receipt.staff.phone}}</p>
+          <ng-container *ngFor="let receipt of receipts">
+            <tr>
+              <td class="receipt-table-data-column">
+                <section class="selection-data-column">
+                  <i class="material-icons" [ngClass]="{'expanded': receipt.tableAttributes.expanded}" (click)="receipt.tableAttributes.expanded = !receipt.tableAttributes.expanded" >
+                    chevron_right
+                  </i>
+                  <input type="checkbox" class="table-checkbox">
                 </section>
-              </section>
-            </td>
-            <td class="receipt-table-data-column">
-              8 hours
-            </td>
-            <td class="receipt-table-data-column">
-              €442,25
-            </td>
-            <td class="receipt-table-data-column">
-              {{receipt.startDate | date: 'shortDate'}} - {{receipt.endDate | date: 'shortDate'}}
-            </td>
-            <td class="receipt-table-data-column">
-              <section class="status-data-column">
-                <section class="badge" [ngStyle]="statusColor[receipt.status]">{{receipt.status}}</section>
-                <i class="material-icons">
-                  more_vert
-                </i>
-              </section>
-            </td>
-          </tr>
+              </td>
+              <td class="receipt-table-data-column">
+                <section class="receipt-number-data-column">
+                  <section class="badge" [ngStyle]="{'background': 'rgba(60, 64, 67, 0.15)', 'color': 'rgba(60, 64, 67, 1)'}">{{receipt.number}}</section>
+                </section>
+              </td>
+              <td class="receipt-table-data-column">
+                {{receipt.date | date: 'short'}}
+              </td>
+              <td class="receipt-table-data-column with-left-border">
+                <section class="project-number-data-column">
+                  <p>{{receipt.project.number}}</p>
+                  <p class="project-receipts">8 receipts</p>
+                </section>
+              </td>
+              <td class="receipt-table-data-column">
+                {{receipt.hiredThrough}}
+              </td>
+              <td class="receipt-table-data-column">
+                <section class="address-data-column">
+                  <p class="address">{{receipt.address}} </p>
+                  <p class="place">{{receipt.city}}</p>
+                </section>
+              </td>
+              <td class="receipt-table-data-column ">
+                <section class="name-data-column">
+                  <i class="material-icons">
+                    comment
+                  </i>
+                  <section>
+                    <p class="name-data-column-title">{{receipt.staff.firstName}} {{receipt.staff.lastName}}</p>
+                    <p class="name-data-column-phone">{{receipt.staff.phone}}</p>
+                  </section>
+                </section>
+              </td>
+              <td class="receipt-table-data-column">
+                8 hours
+              </td>
+              <td class="receipt-table-data-column">
+                €442,25
+              </td>
+              <td class="receipt-table-data-column">
+                {{receipt.startDate | date: 'shortDate'}} - {{receipt.endDate | date: 'shortDate'}}
+              </td>
+              <td class="receipt-table-data-column with-left-border">
+                <section class="status-data-column">
+                  <section class="badge" [ngStyle]="statusColor[receipt.status]">{{receipt.status}}</section>
+                  <i class="material-icons">
+                    more_vert
+                  </i>
+                </section>
+              </td>
+            </tr>
+            <tr class="expanded-row-section" *ngIf="receipt.tableAttributes.expanded" @fadeInOut>
+              <td colspan="3">
+                <section class="detail-column column-with-right-border">
+                  <h2>General info</h2>
+                  <p>Sandra Verkerk</p>
+                  <a>hello@Chriszijlstra.nl</a>
+                  <a>+ 31 (0) 6 45 401 409</a>
+                  <a>
+                    Send Email
+                    <i class="material-icons">
+                      chevron_right
+                    </i>
+                  </a>
+                </section>
+              </td>
+              <td colspan="2">
+                <section class="detail-column column-with-right-border">
+                </section>
+              </td>
+              <td colspan="2">
+                <section class="detail-column column-with-right-border">
+                </section>
+              </td>
+              <td colspan="3">
+                <section class="detail-column">
+                </section>
+              </td>
+              <td colspan="1" [ngStyle]="{'border-left': '1px solid rgba(60, 64, 67, 0.18)'}">
+                <section class="action-column">
+                  <a class="action-anchor">Approve receipts</a>
+                  <a class="action-anchor">Decline receipts</a>
+                  <a class="action-anchor">Change details</a>
+                  <a class="action-anchor delete-action">Delete receipt</a>
+                </section>
+              </td>
+            </tr>
+          </ng-container>
+
         </tbody>
       </table>
     </section>

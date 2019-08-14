@@ -1,7 +1,5 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import Receipt from '../models/receipt';
-import Project from '../models/project';
-import Staff from '../models/staff';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +33,11 @@ export class ReceiptService {
         endDate: new Date(),
         status: 'Approved',
         costs: [],
-        hours: []
+        hours: [],
+        tableAttributes: {
+          expanded: false,
+          selected: false
+        }
       },
       {
         number: 'WB176',
@@ -60,7 +62,11 @@ export class ReceiptService {
         endDate: new Date(),
         status: 'New',
         costs: [],
-        hours: []
+        hours: [],
+        tableAttributes: {
+          expanded: false,
+          selected: false
+        }
       },
       {
         number: 'wb176',
@@ -85,7 +91,11 @@ export class ReceiptService {
         endDate: new Date(),
         status: 'Rejected',
         costs: [],
-        hours: []
+        hours: [],
+        tableAttributes: {
+          expanded: false,
+          selected: false
+        }
       },
       {
         number: 'WB176',
@@ -110,7 +120,11 @@ export class ReceiptService {
         endDate: new Date(),
         status: 'Seen',
         costs: [],
-        hours: []
+        hours: [],
+        tableAttributes: {
+          expanded: false,
+          selected: false
+        }
       },
       {
         number: 'WB176',
@@ -135,7 +149,11 @@ export class ReceiptService {
         endDate: new Date(),
         status: 'Seen',
         costs: [],
-        hours: []
+        hours: [],
+        tableAttributes: {
+          expanded: false,
+          selected: false
+        }
       },
       {
         number: 'WB176',
@@ -160,7 +178,11 @@ export class ReceiptService {
         endDate: new Date(),
         status: 'Seen',
         costs: [],
-        hours: []
+        hours: [],
+        tableAttributes: {
+          expanded: false,
+          selected: false
+        }
       },
       {
         number: 'WB176',
@@ -185,7 +207,11 @@ export class ReceiptService {
         endDate: new Date(),
         status: 'Seen',
         costs: [],
-        hours: []
+        hours: [],
+        tableAttributes: {
+          expanded: false,
+          selected: false
+        }
       },
       {
         number: 'WB176',
@@ -210,7 +236,11 @@ export class ReceiptService {
         endDate: new Date(),
         status: 'Seen',
         costs: [],
-        hours: []
+        hours: [],
+        tableAttributes: {
+          expanded: false,
+          selected: false
+        }
       },
     ];
   }

@@ -10,8 +10,10 @@
 }
 
 .logo-anchor {
-  height: 20px;
-  width: auto;
+  img {
+    height: 2rem;
+    width: auto;
+  }
 }
 
 .menu-item-container {

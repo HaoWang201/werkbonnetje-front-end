@@ -18,4 +18,9 @@ export default class Receipt {
   status: 'Approved' | 'New' | 'Rejected' | 'Seen';
   costs: any[];
   hours: any[];
+
+  tableAttributes?: {
+    expanded: boolean;
+    selected: boolean;
+  };
 }
